@@ -1,4 +1,5 @@
 const express = require('express')
+const userRouters = require('./users/users-router')
 
 const server = express()
 const port = process.env.PORT || 5000
@@ -10,6 +11,8 @@ server.get("/", (req, res, next) => {
     message: "Hello my dude"
   })
 })
+
+server.use(userRouters)
 
 server.use((err, req, res, next) => {
   console.log(err)
